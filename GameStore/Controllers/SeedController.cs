@@ -31,7 +31,7 @@ namespace GameStore.Controllers
                 AS
                 BEGIN
                 SET NOCOUNT ON
-                DECLARE @i INT = 1;
+                DECLARE @i INT = 0;
                 DECLARE @catId INT;
                 DECLARE @CatCount INT = @RowCount / 10;
                 DECLARE @pprice DECIMAL(5,2);

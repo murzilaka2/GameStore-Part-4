@@ -1,9 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Все товары";
 }
-@model IQueryable<Product>
+@model IEnumerable<Product>
 
 <h3 class="p-2 bg-primary text-white text-center">Товары</h3>
+
+<div class="text-center">
+    @Html.Partial("Pages", Model)
+
+    @{
+        ViewBag.searches = new string[] { "Name", "Category.Name" };
+        ViewBag.sorts = new string[] { "Name", "Category.Name", "PurchasePrice", "RetailPrice" };
+    }
+    @Html.Partial("PageOptions", Model)
+</div>
+
+
 <div class="container">
 
     <div class="row">
@@ -24,8 +36,8 @@
             <div class="col">
                 <form asp-action="DeleteProduct" method="post">
                     <input type="hidden" name="Id" value="@product.Id">
-                                    <a asp-action="UpdateProduct" asp-route-id="@product.Id" class="btn btn-outline-primary">Редактировать</a>
-<button type="submit" class="btn btn-outline-danger">Удалить</button>
+                    <a asp-action="UpdateProduct" asp-route-id="@product.Id" class="btn btn-outline-primary">Редактировать</a>
+                    <button type="submit" class="btn btn-outline-danger">Удалить</button>
                 </form>
             </div>
         </div>

@@ -1,9 +1,11 @@
 ﻿using GameStore.Models;
+using GameStore.Models.Pages;
 
 namespace GameStore.Interfaces
 {
     public interface IProduct
     {
+        PagedList<Product> GetProducts(QueryOptions options);
         IEnumerable<Product> GetAllProducts();
         Product GetProduct(int id);
         void AddProduct(Product product);

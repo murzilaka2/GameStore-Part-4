@@ -1,5 +1,6 @@
 ﻿using GameStore.Interfaces;
 using GameStore.Models;
+using GameStore.Models.Pages;
 using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Repository
@@ -60,6 +61,11 @@ namespace GameStore.Repository
         {
             _context.Products.Remove(product);
             _context.SaveChanges();
+        }
+
+        public PagedList<Product> GetProducts(QueryOptions options)
+        {
+            return new PagedList<Product>(_context.Products.Include(e=>e.Category), options);
         }
     }
 
