@@ -1,5 +1,6 @@
 ﻿using GameStore.Interfaces;
 using GameStore.Models;
+using GameStore.Models.Pages;
 
 namespace GameStore.Repository
 {
@@ -34,6 +35,12 @@ namespace GameStore.Repository
             _context.Categories.Remove(category);
             _context.SaveChanges();
         }
+
+        public PagedList<Category> GetCategories(QueryOptions options)
+        {
+            return new PagedList<Category>(_context.Categories, options);
+        }
+
     }
 
 }

@@ -1,5 +1,6 @@
 ﻿using GameStore.Interfaces;
 using GameStore.Models;
+using GameStore.Models.Pages;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameStore.Controllers
@@ -12,9 +13,9 @@ namespace GameStore.Controllers
         {
             _categories = categories;
         }
-        public IActionResult Index()
+        public IActionResult Index(QueryOptions options)
         {
-            return View(_categories.GetAllCategories());
+            return View(_categories.GetCategories(options));
         }
         [HttpPost]
         public IActionResult AddCategory(Category category)
